@@ -1,0 +1,35 @@
+<h2>🥪 Panini-Bestellungen</h2>
+
+<div *ngIf="loading" class="loading">Bestellungen werden geladen...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+
+<div class="order-list" *ngIf="!loading && !error && orders.length">
+    <div class="order-card" *ngFor="let order of orders; let i = index">
+        <div class="order-header flex flex-row" >
+            <div (click)="toggleDetails(i)">
+            <span class="order-id">Bestellung vom {{order.timeOfOrder| date:'dd.MM.yyyy'}}</span>
+            <span
+                    class="status"
+                    [class.confirmed]="order.confirmed"
+                    [class.not-confirmed]="!order.confirmed"
+            >
+        {{ order.confirmed ? 'Bestätigt ✅' : 'Offen ⏳' }}
+      </span>
+            <span class="chevron"  >▾</span>
+            </div>
+            <span *ngIf="currentUser.user.isAdmin" class=""  >
+                <button (click)="acceptOrder(order)"mat-button>accept</button>
+            </span>
+        </div>
+
+        <div class="order-body" *ngIf="openIndex === i"   >
+            <p><strong>Benutzer:</strong> {{ order.username }}</p>
+            <p><strong>Zeitpunkt:</strong> {{ order.timeOfOrder | date: 'medium' }}</p>
+            <p><strong>Preis:</strong> {{ order.price | number:'1.2-2' }} €</p>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!loading && !error && !orders.length" class="empty">
+    Keine Bestellungen vorhanden.
+</div>

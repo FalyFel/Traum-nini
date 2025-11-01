@@ -1,0 +1,10 @@
+<DIV class="flex flex-col items-center h-full w-full p-2">
+
+    <p *ngIf="currentUser" class="">
+        Hallo <a>{{currentUser.username}}, knurrt der Magen?</a>
+    </p>
+    <div class=" w-full items-center flex flex-col ">
+        <button routerLink="/order" class="mb-2 w-1/5 px-10 py-10  "  >Panini bestellen</button>
+        <button routerLink="/viewOrders" class="mb-2  w-1/5 px-10 mt-10 "  >Bestellungen ansehen</button>
+    </div>
+</DIV>

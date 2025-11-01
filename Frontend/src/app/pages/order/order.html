@@ -1,0 +1,52 @@
+
+    <div class="container">
+        <DIV  class="ingredients">
+            <h2>Vorlage auswählen:</h2>
+            <mat-form-field >
+                <mat-label>Vorlage auswählen</mat-label>
+                <mat-select [(ngModel)]="selectedTemplate" (selectionChange)="applyTemplate(selectedTemplate!)">
+                    @for (template of templates$|async; track template) {
+                        <mat-option [value]="template">{{ template.name }}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        </DIV>
+        <div class="ingredients">
+            <h2>Zutaten auswählen:</h2>
+            <div class="ingredient-list">
+                <button
+                        *ngFor="let ingredient of ingredientList$ |async"
+                        (click)="toggleIngredient(ingredient)"
+                        [class.selected]="selectedIngredients.includes(ingredient)"
+                >
+                    {{ ingredient.name }} | {{ingredient.preis|number: '1.2-2'}}€
+                </button>
+            </div>
+        </div>
+
+        <div class="preview flex flex-col items-center justify-self-center p-2 w-1/2  ">
+            <h2>Dein Traum Panini:</h2>
+            <button class="m-2" (click)="orderPanini()"  >Panini bestellen</button>
+            <div class="m-2  flex flex-row">
+                <button (click)="addTemplate()" class="mr-3" >Vorlage speichern</button>
+                <mat-form-field  class="">
+                    <mat-label>Vorlagen Namen</mat-label>
+                    <input [(ngModel)]="templateName" matInput >
+                </mat-form-field>
+            </div>
+            <button class="m-2" (click)="clearPanini()">Eingabe zurücksetzen</button>
+            <div class="sandwich m-2">
+                <div class="bread top">🍞 Oberes Brot</div>
+                <div class="filling">
+                    <div *ngFor="let item of selectedIngredients" class="layer">
+                        {{ item.name }}
+                    </div>
+                </div>
+                <div class="bread bottom">🍞 Unteres Brot</div>
+            </div>
+
+            <div class="m-2">
+                {{price| number:'1.2-2'}} €
+            </div>
+        </div>
+    </div>

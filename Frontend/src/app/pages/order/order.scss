@@ -1,0 +1,70 @@
+.container {
+  text-align: center;
+  font-family: sans-serif;
+  margin-top: 40px;
+}
+
+.ingredients {
+  margin-bottom: 30px;
+}
+
+.ingredient-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+button {
+  padding: 10px 15px;
+  border: 2px solid #888;
+  border-radius: 6px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background-color: #ddd;
+}
+
+button.selected {
+  background-color: #a2f1a2;
+  border-color: #4caf50;
+}
+
+.preview {
+  margin-top: 20px;
+}
+
+.sandwich {
+  display: inline-block;
+  background: #fff8e1;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+.bread {
+  background-color: #deb887;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.filling {
+  margin: 10px 0;
+}
+
+.layer {
+  padding: 5px;
+  background-color: #f9f9f9;
+  border-bottom: 1px dashed #ccc;
+}
+
+.clear-btn {
+  margin-top: 15px;
+  background-color: #f88;
+  border-color: #c44;
+  color: white;
+}
