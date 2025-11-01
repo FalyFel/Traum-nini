@@ -1,0 +1,1 @@
+Um das Projekt zum laufen zu bringen müssen ggf. in der Konsole einmal "npm install" ausgeführt werden und dann einmal die server.js Datei gestartet werden und der "ng serve" command in der src/package.json ausgeführt werden.
